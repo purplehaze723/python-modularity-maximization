@@ -44,7 +44,7 @@ def partition(network, refine=True):
     nx.set_edge_attributes(G=network, name='weight', values={edge:1 for edge in network.edges})
 
     B = utils.get_base_modularity_matrix(network)
-
+    B = 0.5*(B + B.T)
     ## set flags for divisibility of communities
     ## initial community is divisible
     divisible_community = deque([0])

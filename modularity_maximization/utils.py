@@ -28,7 +28,9 @@ def get_base_modularity_matrix(network):
     if type(network) == nx.Graph:
         return sparse.csc_matrix(nx.modularity_matrix(network))
     elif type(network) == nx.DiGraph:
-        return sparse.csc_matrix(nx.directed_modularity_matrix(network))
+        B= sparse.csc_matrix(nx.directed_modularity_matrix(network))
+        B = 0.5*(B+B.T)
+        return B
     else:
         raise TypeError('Graph type not supported. Use either nx.Graph or nx.Digraph')
 

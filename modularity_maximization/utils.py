@@ -83,7 +83,7 @@ def get_modularity(network, community_dict):
     Q = 0
     G = network.copy()
     nx.set_edge_attributes(G, {e:1 for e in G.edges}, 'weight')
-    A = nx.to_scipy_sparse_matrix(G).astype(float)
+    A = nx.to_scipy_sparse_array(G, dtype=float)
 
     if type(G) == nx.Graph:
         # for undirected graphs, in and out treated as the same thing
